@@ -1,0 +1,160 @@
+@font-face {
+    font-family: youmurdererbb;
+    src: url("font/youmurdererbb_reg.ttf");
+}
+
+@font-face {
+    font-family: metalmacabre;
+    src: url("font/MetalMacabre.ttf");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+    cursor: url("cursor/hol334.ani"), auto;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(#000000, #252424);
+}
+
+.page-title {
+    color: white;
+    font-family: youmurdererbb, serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 6em;
+}
+
+.overlay-text {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    font-family: metalmacabre, serif;
+}
+
+.overlay-text-small {
+    font-size: .3em;
+}
+
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+}
+
+.game-info {
+    color: #9b9999;
+    font-family: metalmacabre, serif;
+    font-size: 2em;
+}
+
+.card {
+    position: relative;
+    height: 100px;
+    width: 75px;
+    transform: scale(1);
+}
+
+.card-back {
+    background-color: #252424;
+    border-color: white;
+}
+
+.card:active {
+    transform: scale(.95);
+    transition: transform.2s;
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
+
+
+.card-front {
+    background-color: #1a1a1a;
+    border: 1px solid white;
+    transform: rotateY(180deg);
+} 
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.card-face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    backface-visibility: hidden;
+    /* overflow: hidden; */
+    transition: transform 500ms ease-in-out;
+}
+
+.card-back {
+    border-color: white;
+}
+
+.haunted {
+    position: absolute;
+    height: 95px;
+    width: 70px;
+}
+
+.card-value {
+    height: 95px;
+    width: 70px;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        grid-template-columns: repeat(4, auto);
+    }
+
+    .game-info-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
