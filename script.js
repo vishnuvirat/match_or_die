@@ -133,7 +133,7 @@ class MatchOrDie {
             card1.classList.remove('visible');
             card2.classList.remove('visible');
             this.busy = false;
-        }, 1000);
+        }, 500);
     }
     shuffleCards() {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
